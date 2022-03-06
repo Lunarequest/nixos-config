@@ -39,6 +39,7 @@
 
   # This defines packages
   home.packages = with pkgs; [
+    ferdi
     ark
     atom
     vivid

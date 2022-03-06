@@ -50,12 +50,7 @@
     networkmanager = {
       enable = true; # Enables wireless support via wpa_supplicant.
       #dns = "none";
-    };
-    extraHosts = 
-    ''
-	192.168.1.57 striker-eureka
-	192.168.1.2  cherno-alpha
-    '';	
+    }; 
   };
 
   services.dnscrypt-proxy2 = {
