@@ -40,7 +40,9 @@
   # This defines packages
   home.packages = with pkgs; [
     ferdi
+    scrcpy
     ark
+    lyrebird
     atom
     vivid
     manuskript
