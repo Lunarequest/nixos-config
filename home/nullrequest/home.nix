@@ -20,8 +20,7 @@
     viAlias = true;
     #extraConfig = builtins.readFile ../../../nvim/.config/nvim/init.lua;
   };
-  programs.gpg = { enable = true; };
-
+  programs.gpg.enable = true;
   # install zsh, load zshrc
   programs.zsh = {
     enable = true;
@@ -42,6 +41,9 @@
     ferdi
     scrcpy
     ark
+    python310
+    updog
+    wireshark
     lyrebird
     atom
     vivid

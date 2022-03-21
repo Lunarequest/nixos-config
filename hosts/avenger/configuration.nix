@@ -233,6 +233,7 @@
       pkgs.gnumake
       pkgs.nixops
       pkgs.poetry
+      pkgs.distrobox
       themes.nordic-sddm
       pkgs.pridecat
       (pkgs.writeShellScriptBin "nixFlakes" ''
