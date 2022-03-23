@@ -41,7 +41,6 @@
     ferdi
     scrcpy
     ark
-    python310
     updog
     wireshark
     lyrebird
@@ -57,7 +56,7 @@
     file
     nerdfonts
     nixfmt
-    python39Packages.pip
+    python310Packages.pip
     joplin-desktop
     appstream
     kde-gtk-config
@@ -72,7 +71,7 @@
     niv
     any-nix-shell
     stow
-    python39
+    python310
     nodejs
     nodePackages.npm
     pipenv

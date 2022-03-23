@@ -232,6 +232,7 @@
       pkgs.rubocop
       pkgs.gnumake
       pkgs.nixops
+      pkgs.python310
       pkgs.poetry
       pkgs.distrobox
       themes.nordic-sddm
