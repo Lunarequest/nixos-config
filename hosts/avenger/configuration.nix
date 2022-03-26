@@ -210,6 +210,7 @@
   environment.systemPackages =
     let themes = pkgs.callPackage ./packages/nordic-sddm { };
     in [
+      pkgs.pciutils
       pkgs.clang
       pkgs.lld
       pkgs.alsa-lib

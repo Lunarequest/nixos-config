@@ -54,7 +54,6 @@
     appimage-run
     discord
     file
-    nerdfonts
     nixfmt
     python310Packages.pip
     joplin-desktop
