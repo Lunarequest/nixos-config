@@ -15,7 +15,7 @@
   };
   programs.bat.enable = true;
   programs.neovim = {
-    enable = true;
+    enable = false;
     vimAlias = true;
     viAlias = true;
     #extraConfig = builtins.readFile ../../../nvim/.config/nvim/init.lua;
@@ -23,11 +23,11 @@
   programs.gpg.enable = true;
   # install zsh, load zshrc
   programs.zsh = {
-    enable = true;
+    enable = false;
     initExtraBeforeCompInit = builtins.readFile /home/nullrequest/.dotfiles/zsh/.zshrc;
   };
   programs.vscode = {
-        enable = true;
+        enable = false;
          extensions = with pkgs.vscode-extensions; [
             ms-vsliveshare.vsliveshare
             dracula-theme.theme-dracula
@@ -38,56 +38,12 @@
 
   # This defines packages
   home.packages = with pkgs; [
-    ferdi
     scrcpy
-    ark
     updog
-    wireshark
-    lyrebird
-    atom
-    vivid
-    manuskript
-    kate
-    texlive.combined.scheme-medium
-    editorconfig-core-c
-    libreoffice-fresh-unwrapped
-    appimage-run
-    discord
-    file
     nixfmt
-    python310Packages.pip
-    joplin-desktop
-    appstream
-    kde-gtk-config
-    nextcloud-client
-    nodePackages.bash-language-server
-    nordic
-    rust-analyzer
-    unzip
-    cinnamon.warpinator
-    neofetch
-    git-crypt
     niv
-    any-nix-shell
-    stow
-    python310
-    nodejs
-    nodePackages.npm
-    pipenv
-    tree
-    wget
-    gcc
-    clang-tools
-    flatpak-builder
-    debugedit
-    rustup
-    binutils
-    pinentry-qt
-    ksshaskpass
-    bpytop
-    black
-    yarn
-    hugo
+    pinentry-qt    
+    nixops
   ];
 
   programs.git = {
