@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, inputs, ... }: {
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = "nullrequest";
@@ -12,35 +12,18 @@
     pinentryFlavor = "qt";
   };
   programs.bat.enable = true;
-  programs.neovim = {
-    enable = false;
-    vimAlias = true;
-    viAlias = true;
-    #extraConfig = builtins.readFile ../../../nvim/.config/nvim/init.lua;
-  };
+  
   programs.gpg = {
       enable = true;
       settings = {
           use-agent = true;
       };
   };
-  # install zsh, load zshrc
-  programs.zsh = {
-    enable = false;
-    initExtraBeforeCompInit = builtins.readFile /home/nullrequest/.dotfiles/zsh/.zshrc;
-  };
-  programs.vscode = {
-        enable = false;
-         extensions = with pkgs.vscode-extensions; [
-            ms-vsliveshare.vsliveshare
-            dracula-theme.theme-dracula
-            matklad.rust-analyzer
-            golang.go 
-        ];
-  };
+  
 
   # This defines packages
   home.packages = with pkgs; [
+    any-nix-shell
     scrcpy
     nix-index
     updog
@@ -49,6 +32,7 @@
     niv
     pinentry-qt    
     nixops
+    inputs.deploy-rs.packages."x86_64-linux".deploy-rs
   ];
 
   programs.git = {

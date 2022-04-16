@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, inputs, ... }: {
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = "nullrequest";
@@ -88,6 +88,7 @@
     black
     yarn
     hugo
+    inputs.deploy-rs.packages."x86_64-linux".deploy-rs
   ];
 
   programs.git = {
