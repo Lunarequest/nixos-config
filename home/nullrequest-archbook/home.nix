@@ -6,20 +6,17 @@
 
   # allow unfree packages
   nixpkgs.config.allowUnfree = true;
-  
+
   services.gpg-agent = {
     enable = true;
     pinentryFlavor = "qt";
   };
   programs.bat.enable = true;
-  
+
   programs.gpg = {
-      enable = true;
-      settings = {
-          use-agent = true;
-      };
+    enable = true;
+    settings = { use-agent = true; };
   };
-  
 
   # This defines packages
   home.packages = with pkgs; [
@@ -30,7 +27,7 @@
     nixfmt
     cachix
     niv
-    pinentry-qt    
+    pinentry-qt
     nixops
     inputs.deploy-rs.packages."x86_64-linux".deploy-rs
   ];

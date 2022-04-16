@@ -11,9 +11,7 @@
   nixpkgs.config.allowUnfree = true;
   nix = {
     package = pkgs.nixUnstable;
-    settings = { 
-    	auto-optimise-store = true;
-    };	
+    settings = { auto-optimise-store = true; };
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
@@ -31,7 +29,7 @@
   };
   boot.loader.efi.canTouchEfiVariables = true;
   boot.initrd.compressor = "zstd";
-  boot.kernelPackages = pkgs.linuxPackages_latest; 
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   #boot.extraModulePackages = with config.boot.kernelPackages; [pkgs.keymash];
 
   zramSwap = {
@@ -50,32 +48,32 @@
     networkmanager = {
       enable = true; # Enables wireless support via wpa_supplicant.
       #dns = "none";
-    }; 
+    };
   };
 
   services.dnscrypt-proxy2 = {
-     enable = false;
-     settings = {
-     ipv6_servers = true;
-     require_dnssec = true;
+    enable = false;
+    settings = {
+      ipv6_servers = true;
+      require_dnssec = true;
 
       sources.public-resolvers = {
-      	 urls = [
+        urls = [
           "https://raw.githubusercontent.com/DNSCrypt/dnscrypt-resolvers/master/v3/public-resolvers.md"
           "https://download.dnscrypt.info/resolvers-list/v3/public-resolvers.md"
-       ];
+        ];
         cache_file = "/var/lib/dnscrypt-proxy2/public-resolvers.md";
         minisign_key =
           "RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3";
       };
 
       # You can choose a specific set of servers from https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v3/public-resolvers.md
-       server_names = [ "cloudflare" ];
+      server_names = [ "cloudflare" ];
     };
   };
 
   # Set your time zone.
-  time.timeZone = "Asia/Kolkata"; 
+  time.timeZone = "Asia/Kolkata";
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
@@ -110,8 +108,8 @@
 
   # Enable CUPS to print documents.
   services.printing = {
-  	enable = true;
-  	drivers = [pkgs.epson-201401w];
+    enable = true;
+    drivers = [ pkgs.epson-201401w ];
 
   };
 
@@ -131,36 +129,36 @@
   security.rtkit.enable = true;
   hardware.bluetooth.enable = true;
   services.pipewire = {
-  enable = true;
-  pulse.enable = true;
-  alsa.support32Bit = true;
-  alsa.enable = true;
-  media-session.config.bluez-monitor.rules = [
-    {
-      # Matches all cards
-      matches = [ { "device.name" = "~bluez_card.*"; } ];
-      actions = {
-        "update-props" = {
-          "bluez5.reconnect-profiles" = [ "hfp_hf" "hsp_hs" "a2dp_sink" ];
-          # mSBC is not expected to work on all headset + adapter combinations.
-          "bluez5.msbc-support" = true;
-          # SBC-XQ is not expected to work on all headset + adapter combinations.
-          "bluez5.sbc-xq-support" = true;
+    enable = true;
+    pulse.enable = true;
+    alsa.support32Bit = true;
+    alsa.enable = true;
+    media-session.config.bluez-monitor.rules = [
+      {
+        # Matches all cards
+        matches = [{ "device.name" = "~bluez_card.*"; }];
+        actions = {
+          "update-props" = {
+            "bluez5.reconnect-profiles" = [ "hfp_hf" "hsp_hs" "a2dp_sink" ];
+            # mSBC is not expected to work on all headset + adapter combinations.
+            "bluez5.msbc-support" = true;
+            # SBC-XQ is not expected to work on all headset + adapter combinations.
+            "bluez5.sbc-xq-support" = true;
+          };
         };
-      };
-    }
-    {
-      matches = [
-        # Matches all sources
-        { "node.name" = "~bluez_input.*"; }
-        # Matches all outputs
-        { "node.name" = "~bluez_output.*"; }
-      ];
-      actions = {
-        "node.pause-on-idle" = false;
-      };
-    }
-  ];
+      }
+      {
+        matches = [
+          # Matches all sources
+          {
+            "node.name" = "~bluez_input.*";
+          }
+          # Matches all outputs
+          { "node.name" = "~bluez_output.*"; }
+        ];
+        actions = { "node.pause-on-idle" = false; };
+      }
+    ];
   };
   services.flatpak.enable = true;
   # hardware.pulseaudio.enable = true;

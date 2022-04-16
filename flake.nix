@@ -11,7 +11,7 @@
 
   };
 
-  outputs = inputs @ { self, nixpkgs, home-manager, deploy-rs }: {
+  outputs = inputs@{ self, nixpkgs, home-manager, deploy-rs }: {
     inputs.deploy-rs.inputs.nixpkgs.follows = "nixpkgs";
     nixosConfigurations.gipsy-avenger = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";

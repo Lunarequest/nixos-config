@@ -6,7 +6,7 @@
 
   # allow unfree packages
   nixpkgs.config.allowUnfree = true;
-  
+
   services.gpg-agent = {
     enable = true;
     extraConfig = ''
@@ -24,16 +24,17 @@
   # install zsh, load zshrc
   programs.zsh = {
     enable = true;
-    initExtraBeforeCompInit = builtins.readFile /home/nullrequest/.dotfiles/zsh/.zshrc;
+    initExtraBeforeCompInit =
+      builtins.readFile /home/nullrequest/.dotfiles/zsh/.zshrc;
   };
   programs.vscode = {
-        enable = true;
-         extensions = with pkgs.vscode-extensions; [
-            ms-vsliveshare.vsliveshare
-            dracula-theme.theme-dracula
-            matklad.rust-analyzer
-            golang.go 
-        ];
+    enable = true;
+    extensions = with pkgs.vscode-extensions; [
+      ms-vsliveshare.vsliveshare
+      dracula-theme.theme-dracula
+      matklad.rust-analyzer
+      golang.go
+    ];
   };
 
   # This defines packages
