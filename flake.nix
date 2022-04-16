@@ -17,13 +17,21 @@
       modules = [ ./hosts/avenger/configuration.nix ];
     };
     homeConfigurations = {
+      "nullrequest@gipsy-avenger" = home-manager.lib.homeManagerConfiguration {
+        system = "x86_64-linux";
+        username = "nullrequest";
+        homeDirectory = "/home/nullrequest";
+        stateVersion = "22.05";
+
+        configuration.imports = [ ./home/nullrequest-gipsy-avenger/home.nix ];
+      };
       "nullrequest" = home-manager.lib.homeManagerConfiguration {
         system = "x86_64-linux";
         username = "nullrequest";
         homeDirectory = "/home/nullrequest";
         stateVersion = "22.05";
 
-        configuration.imports = [ ./home/nullrequest/home.nix ];
+        configuration.imports = [ ./home/nullrequest-archbook/home.nix ];
       };
     };
   };

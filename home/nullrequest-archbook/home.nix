@@ -9,9 +9,7 @@
   
   services.gpg-agent = {
     enable = true;
-    extraConfig = ''
-      pinentry-program ${pkgs.pinentry.qt}/bin/pinentry
-    '';
+    pinentryFlavor = "qt";
   };
   programs.bat.enable = true;
   programs.neovim = {
@@ -20,7 +18,12 @@
     viAlias = true;
     #extraConfig = builtins.readFile ../../../nvim/.config/nvim/init.lua;
   };
-  programs.gpg.enable = true;
+  programs.gpg = {
+      enable = true;
+      settings = {
+          use-agent = true;
+      };
+  };
   # install zsh, load zshrc
   programs.zsh = {
     enable = false;
@@ -39,8 +42,10 @@
   # This defines packages
   home.packages = with pkgs; [
     scrcpy
+    nix-index
     updog
     nixfmt
+    cachix
     niv
     pinentry-qt    
     nixops
