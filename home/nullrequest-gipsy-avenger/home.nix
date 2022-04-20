@@ -89,6 +89,7 @@
     black
     yarn
     hugo
+    age
     inputs.deploy-rs.packages."x86_64-linux".deploy-rs
   ];
 

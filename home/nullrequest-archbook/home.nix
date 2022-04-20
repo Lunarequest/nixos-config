@@ -27,8 +27,8 @@
     nixfmt
     cachix
     niv
+    age
     pinentry-qt
-    nixops
     inputs.deploy-rs.packages."x86_64-linux".deploy-rs
   ];
 
