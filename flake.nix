@@ -31,7 +31,7 @@
           ./home/nullrequest-gipsy-avenger/home.nix
         ];
       };
-      "nullrequest@archbook" = home-manager.lib.homeManagerConfiguration {
+      "nullrequest@archwinux" = home-manager.lib.homeManagerConfiguration {
         extraSpecialArgs = { inherit inputs; };
         system = "x86_64-linux";
         username = "nullrequest";
