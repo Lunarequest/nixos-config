@@ -46,7 +46,7 @@
       gc.writeCommitGraph = true;
     };
     signing = {
-      key = null;
+      key = "DE35B861F0FF811E";
       signByDefault = true;
       gpgPath = "gpg";
     };

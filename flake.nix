@@ -12,7 +12,11 @@
 
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, deploy-rs, sops-nix }: {
+  outputs = inputs@{ self, nixpkgs, home-manager, deploy-rs, sops-nix }:
+    let
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+    in
+  {
     inputs.deploy-rs.inputs.nixpkgs.follows = "nixpkgs";
     nixosConfigurations.gipsy-avenger = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
@@ -21,12 +25,13 @@
     };
     homeConfigurations = {
       "nullrequest@gipsy-avenger" = home-manager.lib.homeManagerConfiguration {
-         extraSpecialArgs = { inherit inputs; };
+        extraSpecialArgs = { inherit inputs; };
         system = "x86_64-linux";
         username = "nullrequest";
         homeDirectory = "/home/nullrequest";
         stateVersion = "22.05";
-
+        pkgs = pkgs;
+        
         configuration.imports = [
           ./home/nullrequest-gipsy-avenger/home.nix
         ];
@@ -37,6 +42,7 @@
         username = "nullrequest";
         homeDirectory = "/home/nullrequest";
         stateVersion = "22.05";
+        pkgs = pkgs;
 
         configuration.imports = [ ./home/nullrequest-archbook/home.nix ];
       };
