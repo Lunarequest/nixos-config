@@ -26,25 +26,33 @@
     homeConfigurations = {
       "nullrequest@gipsy-avenger" = home-manager.lib.homeManagerConfiguration {
         extraSpecialArgs = { inherit inputs; };
-        system = "x86_64-linux";
-        username = "nullrequest";
-        homeDirectory = "/home/nullrequest";
-        stateVersion = "22.05";
         pkgs = pkgs;
         
-        configuration.imports = [
+        modules = [
           ./home/nullrequest-gipsy-avenger/home.nix
+          {
+            home = {
+              system = "x86_64-linux";
+              username = "nullrequest";
+              homeDirectory = "/home/nullrequest";
+              stateVersion = "22.05";
+            };
+          }
         ];
       };
       "nullrequest@archwinux" = home-manager.lib.homeManagerConfiguration {
-        extraSpecialArgs = { inherit inputs; };
-        system = "x86_64-linux";
-        username = "nullrequest";
-        homeDirectory = "/home/nullrequest";
-        stateVersion = "22.05";
         pkgs = pkgs;
-
-        configuration.imports = [ ./home/nullrequest-archbook/home.nix ];
+        extraSpecialArgs = { inherit inputs; };
+        modules =[ 
+          ./home/nullrequest-archbook/home.nix
+          { 
+            home = {
+              username = "nullrequest";
+              homeDirectory = "/home/nullrequest";
+              stateVersion = "22.05";
+            };
+          }
+        ];
       };
     };
   };
