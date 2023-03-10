@@ -42,7 +42,6 @@
           extraSpecialArgs = { inherit inputs; };
           modules = [
             ./home/nullrequest-lifrith/home.nix
-            +
             {
               home = {
                 username = "nullrequest";
