@@ -46,13 +46,7 @@
       gc.writeCommitGraph = true;
     };
     signing = {
-<<<<<<<< Updated upstream:home/nullrequest-lifrith/home.nix
-      key = "6AE2F19F65254342";
-|||||||| Stash base:home/nullrequest-archbook/home.nix
-      key = "DE35B861F0FF811E";
-========
       key = "A8DDA64FEC4AF0A6C18821396AE2F19F65254342";
->>>>>>>> Stashed changes:home/luna-aerial/home.nix
       signByDefault = true;
       gpgPath = "gpg";
     };
