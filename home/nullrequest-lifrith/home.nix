@@ -1,8 +1,8 @@
 { config, pkgs, inputs, ... }: {
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
-  home.username = "luna";
-  home.homeDirectory = "/home/luna";
+  home.username = "nullrequest";
+  home.homeDirectory = "/home/nullrequest";
 
   # allow unfree packages
   nixpkgs.config.allowUnfree = true;
