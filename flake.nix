@@ -17,7 +17,6 @@
     in {
       inputs.deploy-rs.inputs.nixpkgs.follows = "nixpkgs";
       nixosConfigurations.gipsy-avenger = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
         modules =
           [ ./hosts/avenger/configuration.nix sops-nix.nixosModules.sops ];
       };
@@ -30,8 +29,7 @@
             modules = [
               ./home/nullrequest-gipsy-avenger/home.nix
               {
-                home = {
-                  system = "x86_64-linux";
+                home = {      
                   username = "nullrequest";
                   homeDirectory = "/home/nullrequest";
                   stateVersion = "22.05";
@@ -39,15 +37,30 @@
               }
             ];
           };
-        "nullrequest@archwinux" = home-manager.lib.homeManagerConfiguration {
+        "nullrequest@lifrith" = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgs;
           extraSpecialArgs = { inherit inputs; };
           modules = [
-            ./home/nullrequest-archbook/home.nix
+            ./home/nullrequest-lifrith/home.nix
+            +
             {
               home = {
                 username = "nullrequest";
                 homeDirectory = "/home/nullrequest";
+                stateVersion = "22.05";
+              };
+            }
+          ];
+        };
+        "luna@aerial" = home-manager.lib.homeManagerConfiguration {
+          pkgs = pkgs;
+          extraSpecialArgs = { inherit inputs; };
+          modules = [
+            ./home/luna-aerial/home.nix
+            {
+              home = {
+                username = "luna";
+                homeDirectory = "/home/luna";
                 stateVersion = "22.05";
               };
             }
